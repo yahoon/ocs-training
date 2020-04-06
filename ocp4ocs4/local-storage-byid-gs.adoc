@@ -25,7 +25,7 @@ You must add the monitoring label to this namespace. This is required to get pro
 oc label namespace openshift-storage "openshift.io/cluster-monitoring=true"
 ----
 
-[NOTE]
+[IMPORTANT]
 ====
 Prior to OCS 4.3 GA, *skip* the steps above to create openshift-storage namespace. Instead use https://raw.githubusercontent.com/red-hat-storage/ocs-training/ocs-goldman/ocp4ocs4/deploy-with-olm.yaml[deploy-with-olm.yaml] and execute `oc create -f deploy-with-olm.yaml`.
 
@@ -75,7 +75,7 @@ watch oc -n openshift-storage get csv
 .Example output:
 ----
 NAME                            DISPLAY                       VERSION        REPLACES   PHASE
-lib-bucket-provisioner.v1.0.0   lib-bucket-provisioner        1.0.0                     Succeeded
+lib-bucket-provisioner.v1.0.0   lib-bucket-provisioner        1.0.0                     Installing
 ocs-operator.v4.3.0             OpenShift Container Storage   4.3.0                     Succeeded
 ----
 
@@ -83,8 +83,24 @@ You can exit by pressing kbd:[Ctrl+C]
 
 The resource `csv` is a shortened word for `clusterserviceversions.operators.coreos.com`.
 
+[IMPORTANT]
+====
+Prior to OCS 4.3 GA, the lib-bucket-provisioner `csv` and `deployment` will need to be edited and the image *kubernetes/pause* will need to be changed to *quay.io/crio/pause@sha256:21426d7935da8cda014d98236842a0c2558cce328e69187d3a6b8d08e30b520d*. Edit the `csv` first and then the lib-bucket-provisioner `deployment` second to replace the image:sha name.
+====
+
+[source,role="execute"]
+----
+watch oc -n openshift-storage get csv
+----
+.Example output:
+----
+NAME                            DISPLAY                       VERSION        REPLACES   PHASE
+lib-bucket-provisioner.v1.0.0   lib-bucket-provisioner        1.0.0                     Succeeded
+ocs-operator.v4.3.0             OpenShift Container Storage   4.3.0                     Succeeded
+----
 .Please wait until both operators `PHASE` changes to `Succeeded`
-CAUTION: Reaching this state can take several minutes.
+
+You can exit by pressing kbd:[Ctrl+C]
 
 You will now also see operator pods have been started in the `openshift-storage` namespace:
 
