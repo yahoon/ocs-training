@@ -789,22 +789,28 @@ metadata:
   namespace: openshift-storage
 spec:
   manageNodes: false
-  resources:
+  resources: # Default resources for MDS and noobaa pods
     mds:
       limits:
         cpu: 3
+        memory: 8Gi
       requests:
-        cpu: 1
+        cpu: 3
+        memory: 8Gi
     noobaa-core:
       limits:
         cpu: 2
+        memory: 4Gi
       requests:
-        cpu: 1
+        cpu: 2
+        memory: 4Gi
     noobaa-db:
       limits:
         cpu: 2
+        memory: 4Gi
       requests:
-        cpu: 1
+        cpu: 2
+        memory: 4Gi
   monDataDirHostPath: /var/lib/rook
   storageDeviceSets:
   - count: 1
@@ -821,7 +827,13 @@ spec:
     placement: {}
     portable: false
     replica: 3
-    resources: {}
+    resources: # Default resources for OSD pods
+      limits:
+        cpu: 2
+        memory: 8Gi
+      requests:
+        cpu: 1
+        memory: 4Gi
 ----
 
 [IMPORTANT]
