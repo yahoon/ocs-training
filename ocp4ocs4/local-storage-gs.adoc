@@ -694,8 +694,6 @@ spec:
         - /dev/sdc             # <-- modify this line
         - /dev/sdd             # <-- modify this line
         - /dev/sde             # <-- modify this line
-        - /dev/sdf             # <-- modify this line
-        - /dev/sdg             # <-- modify this line
 ----
 
 Create this LocalVolume CR for Block *PVs* using the following command:
@@ -730,6 +728,22 @@ metadata:
   namespace: openshift-storage
 spec:
   manageNodes: false
+  resources:
+    mds:
+      limits:
+        cpu: 3
+      requests:
+        cpu: 1
+    noobaa-core:
+      limits:
+        cpu: 2
+      requests:
+        cpu: 1
+    noobaa-db:
+      limits:
+        cpu: 2
+      requests:
+        cpu: 1
   monDataDirHostPath: /var/lib/rook
   storageDeviceSets:
   - count: 1
