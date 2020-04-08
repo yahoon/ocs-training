@@ -27,7 +27,7 @@ oc label namespace openshift-storage "openshift.io/cluster-monitoring=true"
 
 [NOTE]
 ====
-Prior to OCS 4.3 GA, *skip* the steps above to create openshift-storage namespace. Instead use https://raw.githubusercontent.com/red-hat-storage/ocs-training/ocs-telus/ocp4ocs4/deploy-with-olm.yaml[deploy-with-olm.yaml] and execute `oc create -f deploy-with-olm.yaml`.
+If deploying OCS pre-release version, *skip* the steps above to create openshift-storage namespace. Instead use https://raw.githubusercontent.com/red-hat-storage/ocs-training/ocs-telus/ocp4ocs4/deploy-with-olm.yaml[deploy-with-olm.yaml] and execute `oc create -f deploy-with-olm.yaml`.
 
 .Example output:
 ----
@@ -67,26 +67,6 @@ NOTE: Do not change any configuration other than the namespace as shown above.
 Click `Subscribe`.
 
 Now you can go back to your terminal window to check the progress of the installation.
-
-[source,role="execute"]
-----
-watch oc -n openshift-storage get csv
-----
-.Example output:
-----
-NAME                            DISPLAY                       VERSION        REPLACES   PHASE
-lib-bucket-provisioner.v1.0.0   lib-bucket-provisioner        1.0.0                     Installing
-ocs-operator.v4.3.0             OpenShift Container Storage   4.3.0                     Succeeded
-----
-
-You can exit by pressing kbd:[Ctrl+C]
-
-The resource `csv` is a shortened word for `clusterserviceversions.operators.coreos.com`.
-
-[IMPORTANT]
-====
-Prior to OCS 4.3 GA, the lib-bucket-provisioner `csv` and `deployment` will need to be edited and the image *kubernetes/pause* will need to be replaced with *quay.io/crio/pause@sha256:21426d7935da8cda014d98236842a0c2558cce328e69187d3a6b8d08e30b520d*. Edit the lib-bucket-provisioner `csv` first with this image@sha. Next, edit the lib-bucket-provisioner `deployment` and replace kubernetes/pause with this image@sha if not already correct.
-====
 
 [source,role="execute"]
 ----
