@@ -85,7 +85,7 @@ The resource `csv` is a shortened word for `clusterserviceversions.operators.cor
 
 [IMPORTANT]
 ====
-Prior to OCS 4.3 GA, the lib-bucket-provisioner `csv` and `deployment` will need to be edited and the image *kubernetes/pause* will need to be replaced with *quay.io/crio/pause@sha256:21426d7935da8cda014d98236842a0c2558cce328e69187d3a6b8d08e30b520d*. Edit the lib-bucket-provisioner `csv` first with this image@sha. Next, edit the lib-bucket-provisioner `deployment` and replace kubernetes/pause with this image@sha if not already correct.
+Prior to OCS 4.4, the lib-bucket-provisioner `csv` and `deployment` will need to be edited and the image *kubernetes/pause* will need to be replaced with *quay.io/crio/pause@sha256:21426d7935da8cda014d98236842a0c2558cce328e69187d3a6b8d08e30b520d*. Edit the lib-bucket-provisioner `csv` first with this image@sha. Next, edit the lib-bucket-provisioner `deployment` and replace kubernetes/pause with this image@sha if not already correct.
 ====
 
 [source,role="execute"]
