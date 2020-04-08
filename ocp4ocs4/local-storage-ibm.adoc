@@ -27,7 +27,7 @@ oc label namespace openshift-storage "openshift.io/cluster-monitoring=true"
 
 [NOTE]
 ====
-If deploying OCS pre-release version, *skip* the steps above to create openshift-storage namespace. Instead use https://raw.githubusercontent.com/red-hat-storage/ocs-training/ocs-telus/ocp4ocs4/deploy-with-olm.yaml[deploy-with-olm.yaml] and execute `oc create -f deploy-with-olm.yaml`.
+If deploying OCS pre-release version, *skip* the steps above to create openshift-storage namespace. Instead use https://raw.githubusercontent.com/red-hat-storage/ocs-training/ocs-ibm/ocp4ocs4/deploy-with-olm.yaml[deploy-with-olm.yaml] and execute `oc create -f deploy-with-olm.yaml`.
 
 .Example output:
 ----
